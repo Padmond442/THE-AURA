@@ -10,12 +10,19 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  // --- ADD THIS SECTION ---
-  server: {
-    host: true, // This exposes the project on your local network
-    port: 8000, // You can specify a port or leave it default
+  // --- ADD THIS TO FIX THE BUILD ERROR ---
+  ssr: {
+    external: [
+      '@tanstack/start',
+      '@tanstack/start-server-core',
+      '@tanstack/react-router'
+    ],
   },
-  // ------------------------
+  // ---------------------------------------
+  server: {
+    host: true,
+    port: 8000,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
