@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import { perfumes } from "@/data/perfumes";
 
 export const Route = createFileRoute("/journey")({
@@ -20,92 +20,92 @@ const steps = [
   {
     eyebrow: "Mood",
     q: "What mood do you wish to inhabit?",
-    helper: "Begin with the emotional atmosphere you want the fragrance to create.",
+    helper: "Start with the feeling you want the fragrance to carry.",
     opts: [
       {
         label: "Quiet & tender",
-        detail: "Soft skin, close conversation, gentle presence.",
+        detail: "Soft, intimate, close to skin.",
       },
       {
         label: "Mysterious",
-        detail: "Shadowed rooms, late hours, magnetic restraint.",
+        detail: "Dark, magnetic, evening-weight.",
       },
       {
         label: "Luminous",
-        detail: "Clean air, open windows, morning clarity.",
+        detail: "Clean, bright, quietly radiant.",
       },
       {
         label: "Confident",
-        detail: "Tailored energy, direct gaze, lasting impression.",
+        detail: "Polished, direct, memorable.",
       },
     ],
   },
   {
     eyebrow: "Weather",
     q: "Choose a weather.",
-    helper: "Weather changes how memory feels. Choose the climate of your scent.",
+    helper: "Weather gives the scent its atmosphere.",
     opts: [
       {
         label: "First rain",
-        detail: "Mineral, clean, intimate, newly awakened.",
+        detail: "Fresh, mineral, newly awakened.",
       },
       {
         label: "Summer dusk",
-        detail: "Warm air, golden skin, slow brightness.",
+        detail: "Warm, golden, slow-moving.",
       },
       {
         label: "Winter morning",
-        detail: "Crisp light, silence, polished freshness.",
+        detail: "Crisp, clear, composed.",
       },
       {
         label: "Autumn smoke",
-        detail: "Dry leaves, amber heat, quiet depth.",
+        detail: "Dry, ambered, quietly deep.",
       },
     ],
   },
   {
     eyebrow: "Place",
     q: "Choose a city.",
-    helper: "A place gives the fragrance its architecture and rhythm.",
+    helper: "Place gives the fragrance its rhythm.",
     opts: [
       {
         label: "Paris",
-        detail: "Powder, polish, elegance, restraint.",
+        detail: "Elegant, powdered, restrained.",
       },
       {
         label: "Marrakech",
-        detail: "Spice, heat, texture, glowing walls.",
+        detail: "Spiced, warm, textured.",
       },
       {
         label: "Lisbon",
-        detail: "Salt air, tiled streets, amber light.",
+        detail: "Salted air, amber light.",
       },
       {
         label: "Kyoto",
-        detail: "Stillness, incense, woods, quiet ritual.",
+        detail: "Still, wooded, ritualistic.",
       },
     ],
   },
   {
     eyebrow: "Texture",
     q: "Choose a fabric.",
-    helper: "Texture decides how the scent should sit on the skin.",
+    helper: "Texture decides how the scent should sit.",
     opts: [
       {
         label: "Bare linen",
-        detail: "Clean, breathable, effortless, close.",
+        detail: "Clean, breathable, effortless.",
       },
       {
         label: "Velvet",
-        detail: "Deep, plush, sensual, evening-weight.",
+        detail: "Plush, sensual, enveloping.",
       },
       {
         label: "Silk",
-        detail: "Smooth, luminous, refined, fluid.",
+        detail: "Smooth, luminous, fluid.",
       },
       {
         label: "Worn leather",
-        detail: "Warm, lived-in, bold, intimate.",
+        detail: "Warm, bold, lived-in.",
       },
     ],
   },
@@ -197,77 +197,64 @@ function Journey() {
   };
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-white text-zinc-950 overflow-hidden">
+    <main className="min-h-[calc(100vh-4rem)] bg-white text-zinc-950">
       {/* HERO */}
-      <section className="theme-noir relative overflow-hidden border-b border-white/10 bg-zinc-950 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_34%),radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_28%),linear-gradient(to_bottom,rgba(255,255,255,0.04),transparent)] pointer-events-none" />
-        <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
+      <section className="bg-zinc-950 text-white border-b border-white/10">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10 pt-28 md:pt-32 pb-14 md:pb-18">
+          <div className="max-w-4xl">
+            <p className="text-[10px] uppercase tracking-luxe text-white/45">
+              Scent Journey
+            </p>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-28 md:pt-32 pb-14 md:pb-20">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
-            <div className="lg:col-span-7">
-              <p className="text-[10px] uppercase tracking-luxe text-white/45">
-                Scent Journey
-              </p>
+            <h1 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight mt-5">
+              {done ? "Composed for you." : "Find your fragrance."}
+            </h1>
 
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mt-5 max-w-4xl text-white">
-                {done ? "Composed for you." : "Find the scent your mood remembers."}
-              </h1>
+            <p className="mt-6 text-sm md:text-base leading-relaxed text-white/55 max-w-xl">
+              Answer four quiet prompts. We will suggest scents by mood, weather, place, and texture.
+            </p>
+          </div>
+
+          <div className="mt-10 max-w-xl">
+            <div className="h-px bg-white/15">
+              <div
+                className="h-px bg-white transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
             </div>
 
-            <div className="lg:col-span-5">
-              <p className="text-sm md:text-base leading-relaxed text-white/55 max-w-md lg:ml-auto">
-                Answer four sensory prompts. We translate mood, weather, place, and texture into a fragrance direction you can wear.
-              </p>
-
-              <div className="mt-8 grid grid-cols-4 gap-2 max-w-md lg:ml-auto">
-                {steps.map((item, i) => (
-                  <div key={item.eyebrow}>
-                    <div
-                      className={`h-1 rounded-full transition-colors ${
-                        i < step || done
-                          ? "bg-white"
-                          : i === step
-                            ? "bg-white/50"
-                            : "bg-white/15"
-                      }`}
-                    />
-                    <p className="mt-2 text-[9px] uppercase tracking-[0.24em] text-white/35 hidden sm:block">
-                      {item.eyebrow}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-4 grid grid-cols-4 gap-4">
+              {steps.map((item, i) => (
+                <p
+                  key={item.eyebrow}
+                  className={`text-[9px] uppercase tracking-[0.22em] ${
+                    i < step || done
+                      ? "text-white"
+                      : i === step
+                        ? "text-white/60"
+                        : "text-white/25"
+                  }`}
+                >
+                  {item.eyebrow}
+                </p>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {!done ? (
-        <section className="relative bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10 py-12 md:py-20">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
-              {/* LEFT PANEL */}
-              <aside className="lg:col-span-4">
-                <div className="lg:sticky lg:top-28 p-6 md:p-8">
-                  <div className="flex items-center justify-between">
-                    <p className="text-[10px] uppercase tracking-luxe text-zinc-500">
-                      Step {step + 1} of {steps.length}
-                    </p>
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10 py-12 md:py-20">
+            <div className="grid lg:grid-cols-[280px_1fr] gap-10 lg:gap-20">
+              {/* STATUS */}
+              <aside>
+                <div className="lg:sticky lg:top-28">
+                  <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
+                    Step {step + 1} of {steps.length}
+                  </p>
 
-                    <span className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                      {Math.round(progress)}%
-                    </span>
-                  </div>
-
-                  <div className="mt-5 h-1 bg-zinc-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-zinc-950 rounded-full transition-all duration-500"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-
-                  <h2 className="font-display text-4xl md:text-5xl leading-none mt-8">
+                  <h2 className="font-display text-4xl mt-4 leading-none">
                     {steps[step].eyebrow}
                   </h2>
 
@@ -276,19 +263,16 @@ function Journey() {
                   </p>
 
                   {answers.length > 0 && (
-                    <div className="mt-8 border-t border-zinc-200 pt-6">
+                    <div className="mt-8 pt-6 border-t border-zinc-200">
                       <p className="text-[10px] uppercase tracking-luxe text-zinc-400 mb-4">
-                        Your trail
+                        Selected
                       </p>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="space-y-2">
                         {answers.map((answer) => (
-                          <span
-                            key={answer}
-                            className="rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-zinc-600"
-                          >
+                          <p key={answer} className="text-sm text-zinc-600">
                             {answer}
-                          </span>
+                          </p>
                         ))}
                       </div>
                     </div>
@@ -305,50 +289,32 @@ function Journey() {
                 </div>
               </aside>
 
-              {/* QUESTION AREA */}
-              <div className="lg:col-span-8">
-                <div key={step} className="reveal">
-                  <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                    Choose one
-                  </p>
+              {/* QUESTION */}
+              <div key={step} className="reveal">
+                <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
+                  Choose one
+                </p>
 
-                  <h2 className="font-display text-4xl md:text-6xl leading-tight mt-3 max-w-3xl">
-                    {steps[step].q}
-                  </h2>
+                <h2 className="font-display text-4xl md:text-6xl leading-tight mt-3 max-w-3xl">
+                  {steps[step].q}
+                </h2>
 
-                  <div className="mt-10 grid sm:grid-cols-2 gap-4">
-                    {steps[step].opts.map((opt, index) => (
-                      <button
-                        key={opt.label}
-                        onClick={() => select(opt.label)}
-                        className="group relative min-h-[180px] overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 md:p-8 text-left transition-all duration-500 hover:-translate-y-1 hover:border-zinc-950 hover:shadow-[0_30px_80px_-50px_rgb(0_0_0/0.45)]"
-                      >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,oklch(0.92_0_0),transparent_42%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="mt-10 grid sm:grid-cols-2 border-t border-l border-zinc-200">
+                  {steps[step].opts.map((opt) => (
+                    <button
+                      key={opt.label}
+                      onClick={() => select(opt.label)}
+                      className="group min-h-[150px] border-r border-b border-zinc-200 bg-white p-6 md:p-8 text-left transition-colors hover:bg-zinc-950"
+                    >
+                      <h3 className="font-display text-3xl md:text-4xl transition-colors group-hover:text-white">
+                        {opt.label}
+                      </h3>
 
-                        <div className="relative z-10 flex h-full flex-col justify-between">
-                          <div>
-                            <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                              0{index + 1}
-                            </p>
-
-                            <h3 className="font-display text-3xl md:text-4xl mt-4">
-                              {opt.label}
-                            </h3>
-                          </div>
-
-                          <div className="mt-8 flex items-end justify-between gap-6">
-                            <p className="text-sm leading-relaxed text-zinc-500 max-w-xs">
-                              {opt.detail}
-                            </p>
-
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-200 group-hover:border-zinc-950 group-hover:bg-zinc-950 group-hover:text-white transition-all">
-                              <ArrowRight size={15} strokeWidth={1.5} />
-                            </span>
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
+                      <p className="mt-4 text-sm leading-relaxed text-zinc-500 transition-colors group-hover:text-white/55 max-w-sm">
+                        {opt.detail}
+                      </p>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -356,61 +322,43 @@ function Journey() {
         </section>
       ) : (
         <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10 py-12 md:py-20">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10 py-12 md:py-20">
+            <div className="grid lg:grid-cols-[280px_1fr] gap-10 lg:gap-20">
               {/* SUMMARY */}
-              <aside className="lg:col-span-4">
-                <div className="lg:sticky lg:top-28 rounded-3xl bg-zinc-950 text-white p-6 md:p-8 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_42%)]" />
+              <aside>
+                <div className="lg:sticky lg:top-28">
+                  <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
+                    Your atmosphere
+                  </p>
 
-                  <div className="relative z-10">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5">
-                      <Sparkles size={17} strokeWidth={1.5} />
-                    </div>
+                  <h2 className="font-display text-4xl mt-4 leading-none">
+                    {answers[0]}
+                  </h2>
 
-                    <p className="mt-8 text-[10px] uppercase tracking-luxe text-white/40">
-                      Your atmosphere
-                    </p>
+                  <p className="mt-5 text-sm leading-relaxed text-zinc-500">
+                    From your {answers.join(", ").toLowerCase()}, THE AURA suggests these closest matches.
+                  </p>
 
-                    <h2 className="font-display text-4xl md:text-5xl leading-none mt-3">
-                      A private composition emerges.
-                    </h2>
-
-                    <p className="mt-6 text-sm leading-relaxed text-white/60">
-                      From your {answers.join(", ").toLowerCase()}, THE AURA suggests fragrances with matching emotional weight and texture.
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      {answers.map((answer) => (
-                        <span
-                          key={answer}
-                          className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white/70"
-                        >
-                          {answer}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={reset}
-                      className="mt-10 inline-flex items-center gap-2 text-[10px] uppercase tracking-luxe text-white/60 hover:text-white transition-colors"
-                    >
-                      <RotateCcw size={14} strokeWidth={1.5} />
-                      Begin again
-                    </button>
-                  </div>
+                  <button
+                    onClick={reset}
+                    className="mt-8 inline-flex items-center gap-2 text-[10px] uppercase tracking-luxe text-zinc-500 hover:text-zinc-950 transition-colors"
+                  >
+                    <RotateCcw size={14} strokeWidth={1.5} />
+                    Begin again
+                  </button>
                 </div>
               </aside>
 
               {/* RESULTS */}
-              <div className="lg:col-span-8">
+              <div>
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
                   <div>
                     <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                      Recommended scents
+                      Recommended
                     </p>
+
                     <h2 className="font-display text-4xl md:text-5xl mt-3">
-                      Your closest matches.
+                      Your matches.
                     </h2>
                   </div>
 
@@ -422,57 +370,40 @@ function Journey() {
                   </Link>
                 </div>
 
-                <div className="grid gap-4">
-                  {recommendations.map((p, index) => (
+                <div className="border-t border-l border-zinc-200">
+                  {recommendations.map((p) => (
                     <Link
                       key={p.id}
                       to="/product/$id"
                       params={{ id: p.id }}
-                      className="group grid grid-cols-[96px_1fr] md:grid-cols-[128px_1fr_auto] items-center gap-5 md:gap-8 rounded-3xl border border-zinc-200 bg-white p-4 md:p-5 transition-all duration-500 hover:border-zinc-950 hover:shadow-[0_30px_80px_-55px_rgb(0_0_0/0.5)]"
+                      className="group grid grid-cols-[88px_1fr] md:grid-cols-[112px_1fr_auto] items-center gap-5 md:gap-8 border-r border-b border-zinc-200 bg-white p-4 md:p-5 transition-colors hover:bg-zinc-50"
                     >
-                      <div className="relative aspect-square rounded-2xl bg-zinc-50 overflow-hidden">
+                      <div className="aspect-square bg-zinc-50 overflow-hidden">
                         <img
                           src={p.image}
                           alt={p.name}
-                          className="h-full w-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+                          className="h-full w-full object-contain p-3 transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                       </div>
 
                       <div className="min-w-0">
-                        <div className="flex items-center gap-3">
-                          <span className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                            0{index + 1}
-                          </span>
-                          <span className="h-px w-8 bg-zinc-200" />
-                          <span className="text-[10px] uppercase tracking-luxe text-zinc-400">
-                            {p.family}
-                          </span>
-                        </div>
+                        <p className="text-[10px] uppercase tracking-luxe text-zinc-400">
+                          {p.family}
+                        </p>
 
-                        <h3 className="font-display text-3xl md:text-4xl mt-3">
+                        <h3 className="font-display text-3xl md:text-4xl mt-2">
                           {p.name}
                         </h3>
 
-                        <p className="text-sm text-zinc-500 mt-2 line-clamp-2">
+                        <p className="text-sm text-zinc-500 mt-1 line-clamp-2">
                           {p.tagline}
                         </p>
-
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {p.mood.slice(0, 3).map((m) => (
-                            <span
-                              key={m}
-                              className="rounded-full border border-zinc-200 px-3 py-1 text-[9px] uppercase tracking-[0.18em] text-zinc-500"
-                            >
-                              {m}
-                            </span>
-                          ))}
-                        </div>
                       </div>
 
                       <div className="hidden md:flex items-center pr-3">
                         <span className="text-[10px] uppercase tracking-luxe text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                          Discover →
+                          View →
                         </span>
                       </div>
                     </Link>
