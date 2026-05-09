@@ -39,7 +39,7 @@ export function SearchOverlay() {
   if (!searchOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[80] theme-noir bg-background text-foreground md:bg-background/95 md:backdrop-blur-2xl reveal flex flex-col">
+    <div className="fixed inset-0 z-[80] theme-noir bg-background text-foreground md:bg-background/95 reveal flex flex-col">
       {/* MOBILE HEADER (Sticky) */}
       <div className="flex md:hidden items-center gap-4 px-5 h-16 border-b border-border/50">
         <div className="relative flex-1">

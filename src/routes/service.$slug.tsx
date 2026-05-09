@@ -33,7 +33,7 @@ const services: Record<string, Service> = {
     title: "Concierge.",
     intro: "A perfumer on hand. We help you find — or gift — the precise fragrance for the precise moment.",
     blocks: [
-      { h: "Private consultation", p: "Thirty minutes by video with a Macnelle's perfumer. Complimentary." },
+      { h: "Private consultation", p: "Thirty minutes by video with a THE AURA perfumer. Complimentary." },
       { h: "Bespoke gifting", p: "Hand-tied ribbon, scent personality card, scheduled to the hour." },
       { h: "Atelier visit", p: "By appointment in Grasse. Walk the fields, smell from the rack." },
     ],
@@ -50,7 +50,7 @@ export const Route = createFileRoute("/service/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.service.title.replace(".", "")} · Macnelle's` },
+          { title: `${loaderData.service.title.replace(".", "")} · THE AURA` },
           { name: "description", content: loaderData.service.intro },
         ]
       : [],

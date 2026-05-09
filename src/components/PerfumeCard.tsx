@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Perfume } from "@/data/perfumes";
 import { Aura } from "@/components/Aura";
+import { GiftToggle } from "@/components/GiftToggle";
 
 export function PerfumeCard({ perfume }: { perfume: Perfume }) {
   return (
@@ -12,6 +13,7 @@ export function PerfumeCard({ perfume }: { perfume: Perfume }) {
       <div className="relative aspect-[4/5] overflow-hidden bg-muted">
         <Aura variant={perfume.aura} />
         <div className="smoke-rise absolute inset-0" />
+        <GiftToggle id={perfume.id} />
         <img
           src={perfume.image}
           alt={perfume.name}

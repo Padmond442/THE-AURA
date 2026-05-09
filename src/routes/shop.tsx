@@ -7,7 +7,7 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Shop · THE AURA" },
-      { name: "description", content: "The complete Macnelle's collection of imported French perfumes." },
+      { name: "description", content: "The complete THE AURA collection of imported French perfumes." },
     ],
   }),
 });

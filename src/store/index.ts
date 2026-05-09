@@ -40,7 +40,7 @@ export const useCart = create<CartState>()(
 type VaultCollection = "Date Night" | "Daily" | "Power" | "Vacation";
 
 type VaultState = {
-  saved: Record<string, VaultCollection>; // perfumeId -> collection
+  saved: Record<string, VaultCollection>;
   toggle: (id: string, c: VaultCollection) => void;
   isSaved: (id: string) => boolean;
 };
@@ -62,21 +62,68 @@ export const useVault = create<VaultState>()(
   )
 );
 
+export type GiftCard = {
+  recipient: string;
+  sender: string;
+  message: string;
+  frontColor: string;
+  backColor: string;
+  textColor: string;
+  font: "display" | "sans";
+};
+
+export const defaultGiftCard: GiftCard = {
+  recipient: "",
+  sender: "",
+  message: "",
+  frontColor: "#0a0a0a",
+  backColor: "#f5f1ea",
+  textColor: "#f5f1ea",
+  font: "display",
+};
+
+type ParcelState = {
+  items: string[]; // perfume ids
+  card: GiftCard;
+  add: (id: string) => void;
+  remove: (id: string) => void;
+  has: (id: string) => boolean;
+  toggle: (id: string) => void;
+  setCard: (patch: Partial<GiftCard>) => void;
+  reset: () => void;
+};
+
+export const useParcel = create<ParcelState>()(
+  persist(
+    (set, get) => ({
+      items: [],
+      card: defaultGiftCard,
+      add: (id) => set((s) => (s.items.includes(id) ? s : { items: [...s.items, id] })),
+      remove: (id) => set((s) => ({ items: s.items.filter((x) => x !== id) })),
+      has: (id) => get().items.includes(id),
+      toggle: (id) =>
+        set((s) =>
+          s.items.includes(id)
+            ? { items: s.items.filter((x) => x !== id) }
+            : { items: [...s.items, id] }
+        ),
+      setCard: (patch) => set((s) => ({ card: { ...s.card, ...patch } })),
+      reset: () => set({ items: [], card: defaultGiftCard }),
+    }),
+    { name: "macnelles-parcel" }
+  )
+);
+
 type UIState = {
   cartOpen: boolean;
   searchOpen: boolean;
-  mobileMenuOpen: boolean;
   setCartOpen: (v: boolean) => void;
   setSearchOpen: (v: boolean) => void;
-  setMobileMenuOpen: (v: boolean) => void;
 };
 
 export const useUI = create<UIState>((set) => ({
   cartOpen: false,
   searchOpen: false,
-  mobileMenuOpen: false,
   setCartOpen: (v) => set({ cartOpen: v }),
-  setSearchOpen: (v) => set({ searchOpen: v, cartOpen: false, mobileMenuOpen: false }),
-  setMobileMenuOpen: (v) => set({ mobileMenuOpen: v, cartOpen: false, searchOpen: false }),
-  
+  setSearchOpen: (v) => set({ searchOpen: v }),
 }));

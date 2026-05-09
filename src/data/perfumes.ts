@@ -153,105 +153,105 @@ const palettes: Record<string, PerfumePalette> = {
     dark: "#192222",
     glow: "rgba(50, 69, 69, 0.15)",
   },
-  "cuir": {
+  cuir: {
     dominant: "#76675d",
     ambient: "#231e1b",
     accent: "#9f948d",
     dark: "#3b332e",
     glow: "rgba(118, 103, 93, 0.15)",
   },
-  "santal": {
+  santal: {
     dominant: "#d0c4a2",
     ambient: "#3e3a30",
     accent: "#ded5bd",
     dark: "#686251",
     glow: "rgba(208, 196, 162, 0.15)",
   },
-  "marine": {
+  marine: {
     dominant: "#0f1f63",
     ambient: "#04091d",
     accent: "#576291",
     dark: "#070f31",
     glow: "rgba(15, 31, 99, 0.15)",
   },
-  "oud-royal": {
+  oudRoyal: {
     dominant: "#e9d7ac",
     ambient: "#454033",
     accent: "#efe3c4",
     dark: "#746b56",
     glow: "rgba(233, 215, 172, 0.15)",
   },
-  "tubereuse": {
+  tubereuse: {
     dominant: "#c1bbc4",
     ambient: "#39383a",
     accent: "#d3cfd5",
     dark: "#605d62",
     glow: "rgba(193, 187, 196, 0.15)",
   },
-  "vetiver": {
+  vetiver: {
     dominant: "#d5d732",
     ambient: "#3f400f",
     accent: "#e1e36f",
     dark: "#6a6b19",
     glow: "rgba(213, 215, 50, 0.15)",
   },
-  "patchouli": {
+  patchouli: {
     dominant: "#f0af77",
     ambient: "#483423",
     accent: "#f4c79f",
     dark: "#78573b",
     glow: "rgba(240, 175, 119, 0.15)",
   },
-  "musc-blanc": {
+  muscBlanc: {
     dominant: "#30302f",
     ambient: "#0e0e0e",
     accent: "#6e6e6d",
     dark: "#181817",
     glow: "rgba(48, 48, 47, 0.15)",
   },
-  "neroli": {
+  neroli: {
     dominant: "#e0ba71",
     ambient: "#433721",
     accent: "#e9ce9b",
     dark: "#705d38",
     glow: "rgba(224, 186, 113, 0.15)",
   },
-  "cedre": {
+  cedre: {
     dominant: "#17444d",
     ambient: "#061417",
     accent: "#5c7c82",
     dark: "#0b2226",
     glow: "rgba(23, 68, 77, 0.15)",
   },
-  "iris": {
+  iris: {
     dominant: "#edc461",
     ambient: "#473a1d",
     accent: "#f2d590",
     dark: "#766230",
     glow: "rgba(237, 196, 97, 0.15)",
   },
-  "ambre-gris": {
+  ambreGris: {
     dominant: "#accff1",
     ambient: "#333e48",
     accent: "#c4ddf5",
     dark: "#566778",
     glow: "rgba(172, 207, 241, 0.15)",
   },
-  "rose-oud": {
+  roseOud: {
     dominant: "#910a05",
     ambient: "#2b0301",
     accent: "#b25350",
     dark: "#480502",
     glow: "rgba(145, 10, 5, 0.15)",
   },
-  "cuir-noir": {
+  cuirNoir: {
     dominant: "#1e1d1f",
     ambient: "#090809",
     accent: "#616062",
     dark: "#0f0e0f",
     glow: "rgba(30, 29, 31, 0.15)",
   },
-  "eau-cristal": {
+  eauCristal: {
     dominant: "#fad2cf",
     ambient: "#4b3f3e",
     accent: "#fbdfdd",
