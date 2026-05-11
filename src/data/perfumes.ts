@@ -24,6 +24,7 @@ import ambreGris from "@/assets/bottle-ambre-gris.webp";
 import roseOud from "@/assets/bottle-rose-oud.jpeg";
 import cuirNoir from "@/assets/bottle-cuir-noir.jpg";
 import eauCristal from "@/assets/bottle-eau-cristal.webp";
+import dior from "@/assets/bottle-dior.jpg";
 
 export type AuraVariant = "ember" | "silver" | "frost";
 
@@ -76,28 +77,28 @@ export const auraStyles: Record<
 // Pre-computed palettes — extracted at build time from each bottle image
 // These are the "soul colors" that drive the entire product page aesthetic
 const palettes: Record<string, PerfumePalette> = {
-  minuit: {
+  "minuit": {
     dominant: "#050504",
     ambient: "#010101",
     accent: "#50504f",
     dark: "#020202",
     glow: "rgba(5, 5, 4, 0.15)",
   },
-  blanche: {
+  "blanche": {
     dominant: "#a8a8a8",
     ambient: "#323232",
     accent: "#c2c2c2",
     dark: "#545454",
     glow: "rgba(168, 168, 168, 0.15)",
   },
-  ombre: {
+  "ombre": {
     dominant: "#5e5e5e",
     ambient: "#1c1c1c",
     accent: "#8e8e8e",
     dark: "#2f2f2f",
     glow: "rgba(94, 94, 94, 0.15)",
   },
-  creed: {
+  "creed": {
     dominant: "#161616",
     ambient: "#060606",
     accent: "#5b5b5b",
@@ -153,110 +154,117 @@ const palettes: Record<string, PerfumePalette> = {
     dark: "#192222",
     glow: "rgba(50, 69, 69, 0.15)",
   },
-  cuir: {
+  "cuir": {
     dominant: "#76675d",
     ambient: "#231e1b",
     accent: "#9f948d",
     dark: "#3b332e",
     glow: "rgba(118, 103, 93, 0.15)",
   },
-  santal: {
+  "santal": {
     dominant: "#d0c4a2",
     ambient: "#3e3a30",
     accent: "#ded5bd",
     dark: "#686251",
     glow: "rgba(208, 196, 162, 0.15)",
   },
-  marine: {
+  "marine": {
     dominant: "#0f1f63",
     ambient: "#04091d",
     accent: "#576291",
     dark: "#070f31",
     glow: "rgba(15, 31, 99, 0.15)",
   },
-  oudRoyal: {
+  "oud-royal": {
     dominant: "#e9d7ac",
     ambient: "#454033",
     accent: "#efe3c4",
     dark: "#746b56",
     glow: "rgba(233, 215, 172, 0.15)",
   },
-  tubereuse: {
+  "tubereuse": {
     dominant: "#c1bbc4",
     ambient: "#39383a",
     accent: "#d3cfd5",
     dark: "#605d62",
     glow: "rgba(193, 187, 196, 0.15)",
   },
-  vetiver: {
+  "vetiver": {
     dominant: "#d5d732",
     ambient: "#3f400f",
     accent: "#e1e36f",
     dark: "#6a6b19",
     glow: "rgba(213, 215, 50, 0.15)",
   },
-  patchouli: {
+  "patchouli": {
     dominant: "#f0af77",
     ambient: "#483423",
     accent: "#f4c79f",
     dark: "#78573b",
     glow: "rgba(240, 175, 119, 0.15)",
   },
-  muscBlanc: {
+  "musc-blanc": {
     dominant: "#30302f",
     ambient: "#0e0e0e",
     accent: "#6e6e6d",
     dark: "#181817",
     glow: "rgba(48, 48, 47, 0.15)",
   },
-  neroli: {
+  "neroli": {
     dominant: "#e0ba71",
     ambient: "#433721",
     accent: "#e9ce9b",
     dark: "#705d38",
     glow: "rgba(224, 186, 113, 0.15)",
   },
-  cedre: {
+  "cedre": {
     dominant: "#17444d",
     ambient: "#061417",
     accent: "#5c7c82",
     dark: "#0b2226",
     glow: "rgba(23, 68, 77, 0.15)",
   },
-  iris: {
+  "iris": {
     dominant: "#edc461",
     ambient: "#473a1d",
     accent: "#f2d590",
     dark: "#766230",
     glow: "rgba(237, 196, 97, 0.15)",
   },
-  ambreGris: {
+  "ambre-gris": {
     dominant: "#accff1",
     ambient: "#333e48",
     accent: "#c4ddf5",
     dark: "#566778",
     glow: "rgba(172, 207, 241, 0.15)",
   },
-  roseOud: {
+  "rose-oud": {
     dominant: "#910a05",
     ambient: "#2b0301",
     accent: "#b25350",
     dark: "#480502",
     glow: "rgba(145, 10, 5, 0.15)",
   },
-  cuirNoir: {
+  "cuir-noir": {
     dominant: "#1e1d1f",
     ambient: "#090809",
     accent: "#616062",
     dark: "#0f0e0f",
     glow: "rgba(30, 29, 31, 0.15)",
   },
-  eauCristal: {
+  "eau-cristal": {
     dominant: "#fad2cf",
     ambient: "#4b3f3e",
     accent: "#fbdfdd",
     dark: "#7d6967",
     glow: "rgba(250, 210, 207, 0.15)",
+  },
+  "dior": {
+    dominant: "#050810",
+    ambient: "#010204",
+    accent: "#505257",
+    dark: "#020408",
+    glow: "rgba(5, 8, 16, 0.15)",
   }
 };
 
@@ -715,4 +723,21 @@ export const perfumes: Perfume[] = [
     aura: "frost",
     palette: palettes["eau-cristal"],
   },
+  {
+    id: "dior",
+    name: "Dior Sauvage",
+    tagline: "Frozen stream, cracked light",
+    family: "Aquatic · Fresh",
+    price: 2000,
+    image: dior,
+    notes: {
+      top: ["Ice Accord", "Citrus"],
+      heart: ["Water Lily", "Bamboo"],
+      base: ["White Musk", "Cedar"],
+    },
+    story: "The moment before the thaw — when everything is still, clear, and about to change. Eau Cristal is anticipation bottled.",
+    mood: ["Crisp", "Clean", "Morning"],
+    aura: "frost",
+    palette: palettes["dior"],
+  }
 ];
