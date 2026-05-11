@@ -128,7 +128,7 @@ function Index() {
         <div className="relative z-10 min-h-[82svh] md:min-h-dvh flex flex-col">
           <div className="flex-1 flex items-center">
             <div className="w-full max-w-7xl mx-auto px-6 lg:px-16 pt-20 pb-8 md:py-20 lg:py-0">
-              <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[auto] lg:min-h-[80vh]">
+              <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-auto lg:min-h-[80vh]">
                 {/* TEXT */}
                 <div className="lg:col-span-5 relative z-30 order-2 lg:order-1 -mt-4 sm:mt-0 lg:pt-0">
                   <motion.div
@@ -209,7 +209,7 @@ function Index() {
                 </div>
 
                 {/* BOTTLE */}
-                <div className="lg:col-span-7 relative order-1 lg:order-2 h-[34svh] min-h-[260px] max-h-[390px] sm:h-[44vh] sm:max-h-[520px] lg:h-[78vh] lg:max-h-none">
+                <div className="lg:col-span-7 relative order-1 lg:order-2 h-[34svh] min-h-65 max-h-97.5 sm:h-[44vh] sm:max-h-130 lg:h-[78vh] lg:max-h-none">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <Aura variant="silver" intense className="opacity-[0.15] scale-110" />
                   </div>
@@ -386,25 +386,6 @@ function Index() {
         </div>
       </section>
 
-      {/* COLLECTIONS */}
-      <section className="bg-secondary/30 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-16">
-          <div className="text-center mb-16 lg:mb-20">
-            <p className="text-[10px] uppercase tracking-luxe text-muted-foreground mb-3">Collections</p>
-            <h2 className="font-display text-4xl lg:text-6xl">Curated Houses.</h2>
-            <p className="mt-4 text-sm text-muted-foreground max-w-md mx-auto">
-              Each house represents a distinct philosophy of scent — explore by character, not just ingredient.
-            </p>
-          </div>
-
-          <div className="space-y-20 lg:space-y-28">
-            {collections.map((collection, ci) => (
-              <CollectionBlock key={collection.id} collection={collection} index={ci} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* AURA */}
       <section className="theme-noir bg-background text-foreground py-32 relative overflow-hidden">
         <div className="aura" style={{ opacity: 0.4, inset: "10%" }} />
@@ -425,75 +406,5 @@ function Index() {
         </div>
       </section>
     </>
-  );
-}
-
-function CollectionBlock({
-  collection,
-  index,
-}: {
-  collection: (typeof collections)[0];
-  index: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <div ref={ref} className="relative">
-      <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8 lg:mb-10">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                index === 0
-                  ? "bg-amber-500/60"
-                  : index === 1
-                    ? "bg-rose-400/60"
-                    : index === 2
-                      ? "bg-slate-300/60"
-                      : "bg-cyan-400/60"
-              }`}
-            />
-            <p className="text-[10px] uppercase tracking-luxe text-muted-foreground">{collection.subtitle}</p>
-          </div>
-
-          <h3 className="font-display text-3xl lg:text-4xl">{collection.name}</h3>
-        </div>
-
-        <p className="text-sm text-muted-foreground max-w-xs">{collection.description}</p>
-      </div>
-
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        {collection.perfumes.map((perfume, pi) => (
-          <motion.div
-            key={perfume.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: pi * 0.1, ease: "easeOut" }}
-          >
-            <PerfumeCard perfume={perfume} />
-          </motion.div>
-        ))}
-
-        {collection.perfumes.length < 4 &&
-          [...Array(4 - collection.perfumes.length)].map((_, i) => (
-            <div
-              key={`placeholder-${i}`}
-              className="aspect-3/4 bg-secondary/30 rounded-sm flex items-center justify-center border border-border/20 border-dashed"
-            >
-              <span className="text-[10px] uppercase tracking-luxe text-muted-foreground/30">Coming Soon</span>
-            </div>
-          ))}
-      </div>
-
-      <div className="mt-6 text-right">
-        <Link
-          to="/collections"
-          className="text-[10px] uppercase tracking-luxe text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
-        >
-          View all {collection.name} →
-        </Link>
-      </div>
-    </div>
   );
 }
