@@ -388,7 +388,7 @@ function Index() {
 
       {/* AURA */}
       <section className="theme-noir bg-background text-foreground py-32 relative overflow-hidden">
-        <div className="aura" style={{ opacity: 0.4, inset: "10%" }} />
+        <div className="aura" style={{ opacity: 0, inset: "10%" }} />
 
         <div className="mx-auto max-w-5xl px-6 lg:px-10 text-center relative z-10">
           <p className="text-[10px] uppercase tracking-luxe text-muted-foreground">The Aura</p>
